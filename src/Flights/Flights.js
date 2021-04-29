@@ -22,7 +22,7 @@ const Flights = ({ items, isLoading, activeTab, query }) => {
     return activeTab === tabs.ARRIVALS ? (
     <section className='slotA'>
         {filterItems(items.body.arrival).map((item, index) => {
-                return <li key={index}>{item.term} {item.timeArrShedule} {item[nameProp]}, , {item.fltNo} {item.status}, </li>
+                return <li key={index}>{item.term} {item.timeArrShedule} {item[nameProp]}, , {item.fltNo} {item.status} </li>
         })}
     </section>
     ) : (

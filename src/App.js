@@ -1,24 +1,14 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-import Header from './components/Header';
 import Flights from './Flights/Flights';
 import Search from './components/Search';
 import './App.css';
 import TabNav from './components/TabNav';
 import Tab from './components/Tab';
 import { tabs } from './constants';
-import DatePicker from './components/Date';
 
+<h1>Поиск рейса</h1>
 
-// const Data = () => {
-//   const [startDate,] = useState(new Date());
-//   return (
-//     <DatePicker
-//       dateFormat="dd-MM-yyyy"
-//       onChange={date}
-//     />
-//   );
-// };
 class Opp extends React.Component {
 
   render () {
@@ -44,11 +34,16 @@ const App = () => {
   const[query, setQuerty] = useState('')
   const [tab, setTab] = useState(tabs.ARRIVALS);
 
-  // const dateValue: Date = new Date(new Date().getDay, new Date().getMonth(), new Date().getFullYear())
+
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth()+1).padStart(2, '0');
+  let yyyy = today.getFullYear();
   
+
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios (`https://api.iev.aero/api/flights/29-04-2021`) 
+      const result = await axios (`https://api.iev.aero/api/flights/${dd}-${mm}-${yyyy}`) 
 
       setItems(result.data)
       setIsLoading(false)
@@ -59,11 +54,9 @@ const App = () => {
 
   return (
     <div className="container">
-      {/* <Header /> */}
       <Search onChange={(q) => setQuerty(q)} query={query} />
       <Opp activeTab={tab} setTab={setTab} />
       <Flights activeTab={tab} isLoading={isLoading} items={items} query={query} />
-      {/* <NewDatePicker /> */}
     </div>
   )
   }

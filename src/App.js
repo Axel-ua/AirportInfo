@@ -7,7 +7,7 @@ import TabNav from './components/TabNav';
 import Tab from './components/Tab';
 import { tabs } from './constants';
 
-<h1>Поиск рейса</h1>
+
 
 class Opp extends React.Component {
 
@@ -53,11 +53,19 @@ const App = () => {
   }, [])
 
   return (
+    <>
+    <div className="Name">
+      <h1>Flight Search</h1>
+    </div>
+    <div className="CDate">
+      <p>Current date: {dd}-{mm}-{yyyy}</p>
+    </div>
     <div className="container">
       <Search onChange={(q) => setQuerty(q)} query={query} />
       <Opp activeTab={tab} setTab={setTab} />
       <Flights activeTab={tab} isLoading={isLoading} items={items} query={query} />
     </div>
+    </>
   )
   }
 

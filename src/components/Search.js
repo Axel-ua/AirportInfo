@@ -10,6 +10,7 @@ const Search = ({ onChange, query }) => {
                  value={query}
                  onChange={(e) => onChange(e.target.value)}
                  autoFocus />
+                 <button type="button">Search</button>
             </form>
         </section>
     )

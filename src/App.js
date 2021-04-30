@@ -6,6 +6,7 @@ import './App.css';
 import TabNav from './components/TabNav';
 import Tab from './components/Tab';
 import { tabs } from './constants';
+import TabDate from './components/TabDate'
 
 
 
@@ -62,6 +63,7 @@ const App = () => {
     </div>
     <div className="container">
       <Search onChange={(q) => setQuerty(q)} query={query} />
+      <TabDate />
       <Opp activeTab={tab} setTab={setTab} />
       <Flights activeTab={tab} isLoading={isLoading} items={items} query={query} />
     </div>
